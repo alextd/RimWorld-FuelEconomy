@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	
+	<TD.FuelEconomy>Fuel Economy</TD.FuelEconomy>
+	<TD.WhatPAnEmptyPodSaves>What % an empty pod saves</TD.WhatPAnEmptyPodSaves>
+	<TD.Weight>Weight</TD.Weight>
+	<TD.FuelCostAtMaxRange>Fuel Cost at max range</TD.FuelCostAtMaxRange>
+	<TD.MaxDistance>Max distance with full fuel</TD.MaxDistance>
+	<TD.SettingExtendRange>Increase max range for partially filled transport pods</TD.SettingExtendRange>
+	<TD.SettingEmptyPercent>How much fuel does an empty pod require</TD.SettingEmptyPercent>
+	<TD.FuelSettingsDesc>This mod makes unoccupied transport pods use less fuel. 
+Each kg in the pod means more fuel is needed, and if the pod is full this mod makes no difference.
+
+This also means the base game's maximum range might not use all the fuel.
+So you can either keep that max range or let Fuel Economy extend the range for partially filled pods.</TD.FuelSettingsDesc>
+	<TD.EmptyPercentDesc>This also affects the max range if enabled above.
+100% would just be vanilla.
+0% would mean weightless pods and insane range. Fuel cost would depend solely on contents.
+50% would means the pod weighs 150kg and can hold another 150kg inside. A 50% fuel cost to launch, plus more fuel per passenger.</TD.EmptyPercentDesc>
+	
+</LanguageData>
