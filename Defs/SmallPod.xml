@@ -20,12 +20,12 @@
 		<designationCategory>Misc</designationCategory>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<statBases>
-			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToBuild>250</WorkToBuild>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>400</WorkToBuild>
 			<Flammability>0.5</Flammability>
 		</statBases>
 		<costList>
-			<Steel>10</Steel>
+			<Steel>20</Steel>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Transporter">
