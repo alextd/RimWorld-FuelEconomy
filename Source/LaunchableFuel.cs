@@ -23,22 +23,17 @@ namespace Fuel_Economy
 		public static float smallPodEfficiency = 5;
 		public static float FuelNeededToLaunchAtDist(float dist, CompLaunchable launchable)
 		{
-			float fuelForPod = FuelNeededToLaunchAtDist(dist, PercentFull(launchable));
+			float fuelForPod = MassFactor(launchable) * dist;
 			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
 				fuelForPod /= smallPodEfficiency;
+			Log.Message("Needs " + fuelForPod);
 			return fuelForPod;
-		}
-		public static float FuelNeededToLaunchAtDist(float dist, float percentFull)
-		{
-			float ret = (MassFactor(percentFull) * dist);
-			Log.Message("Needs " + ret);
-			return ret;
 		}
 
 		static int vanillaMax = 66; //150 / 2.25
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, CompLaunchable launchable)
 		{
-			float distance = fuelLevel / MassFactor(PercentFull(launchable));
+			float distance = fuelLevel / MassFactor(launchable);
 			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
 				distance *= smallPodEfficiency;
 			if (!Settings.Get().pastVanillaMaxRange && distance > vanillaMax)
@@ -46,22 +41,15 @@ namespace Fuel_Economy
 			Log.Message("Can do " + distance);
 			return Mathf.FloorToInt(distance);
 		}
-		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, float percentFull)
-		{
-			int ret = Mathf.FloorToInt(fuelLevel / MassFactor(percentFull));
-			if (!Settings.Get().pastVanillaMaxRange && ret > vanillaMax)
-				ret = vanillaMax;
-			Log.Message("Can do " + ret);
-			return ret;
-		}
 
 		// emptyPercent of 50% means a pod weighs 150kg, so a full pod weighs 300kg and an empty pod costs 50% fuel, and can go 2x as far
 		// 0% means it's weightless, can send empty pod with 0% fuel
 		// 100% means essentially infinite weight, all fuel is used to launch pod and the content doesn't matter, and that's vanilla so why do that
-		public static float MassFactor(float percentFull)
+		const float FuelPerTile = 2.25f;
+		public static float MassFactor(CompLaunchable launchable)
 		{
 			float emptyPercent = Settings.Get().emptyPercent;
-			return ((2.25f * emptyPercent) + (2.25f - 2.25f*emptyPercent) * percentFull);
+			return ((FuelPerTile * emptyPercent) + (FuelPerTile - FuelPerTile * emptyPercent) * PercentFull(launchable));
 		}
 
 		public static float PercentFull(CompLaunchable launchable)
@@ -81,15 +69,6 @@ namespace Fuel_Economy
 			}
 			Log.Message("Max is " + max);
 			return mass / max;
-		}
-	}
-
-	[HarmonyPatch(typeof(CompLaunchable), "MaxLaunchDistanceAtFuelLevel")]
-	public static class MaxLaunchDistanceAtFuelLevelPatch
-	{
-		public static void Postfix(float fuelLevel, ref int __result)
-		{
-			__result = LaunchableMethods.MaxLaunchDistanceAtFuelLevel(fuelLevel, 0f);
 		}
 	}
 
@@ -145,17 +124,6 @@ namespace Fuel_Economy
 				}
 				yield return i;
 			}
-		}
-	}
-	
-	[HarmonyPatch(typeof(CompLaunchable))]
-	[HarmonyPatch("MaxLaunchDistanceEverPossible", PropertyMethod.Getter)]
-	static class MaxLaunchDistanceEverPossible_Patch
-	{
-		//private void TryLaunch(GlobalTargetInfo target, PawnsArriveMode arriveMode, bool attackOnArrival)
-		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> codeInstructions)
-		{
-			return MaxLaunchDistance_Patch.Transpiler(codeInstructions);
 		}
 	}
 }
