@@ -3,6 +3,8 @@
 	<name>Fuel Economy</name>
 	<author>Uuugggg</author>
 	<targetVersion>0.19.0</targetVersion>
-	<description>Transport Pods use less fuel for less mass</description>
+	<description>Transport Pods use less fuel for less mass.
+	
+A small pod to transport small amounts of things for less cost.</description>
 	<url>https://steamcommunity.com/id/Uuugggg/myworkshopfiles/?appid=294100</url>
 </ModMetaData>
