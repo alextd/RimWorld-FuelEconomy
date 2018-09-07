@@ -21,7 +21,7 @@ namespace Fuel_Economy
 			if (!transporters.All(t => t.parent.def == SmallPodDefOf.TransportPodSmall))
 				return;
 
-			float maxMass = (transporters[0].props as CompProperties_Transporter).massCapacity;
+			float maxMass = transporters[0].Props.massCapacity;
 			Log.Message($"maxMass is {maxMass}");
 
 			List <TransferableOneWay> transferables = (List<TransferableOneWay>)AccessTools.Field(typeof(Dialog_LoadTransporters), "transferables").GetValue(__instance);
