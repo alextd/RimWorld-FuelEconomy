@@ -12,11 +12,21 @@ using UnityEngine;
 
 namespace Fuel_Economy
 {
+	[DefOf]
+	public static class SmallPodDefOf
+	{
+		public static ThingDef TransportPodSmall;
+	}
+
 	static class LaunchableMethods
 	{
+		public static float smallPodEfficiency = 5;
 		public static float FuelNeededToLaunchAtDist(float dist, CompLaunchable launchable)
 		{
-			return FuelNeededToLaunchAtDist(dist, PercentFull(launchable));
+			float fuelForPod = FuelNeededToLaunchAtDist(dist, PercentFull(launchable));
+			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
+				fuelForPod /= smallPodEfficiency;
+			return fuelForPod;
 		}
 		public static float FuelNeededToLaunchAtDist(float dist, float percentFull)
 		{
@@ -25,11 +35,17 @@ namespace Fuel_Economy
 			return ret;
 		}
 
+		static int vanillaMax = 66; //150 / 2.25
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, CompLaunchable launchable)
 		{
-			return MaxLaunchDistanceAtFuelLevel(fuelLevel, PercentFull(launchable));
+			float distance = fuelLevel / MassFactor(PercentFull(launchable));
+			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
+				distance *= smallPodEfficiency;
+			if (!Settings.Get().pastVanillaMaxRange && distance > vanillaMax)
+				distance = vanillaMax;
+			Log.Message("Can do " + distance);
+			return Mathf.FloorToInt(distance);
 		}
-		static int vanillaMax = 66; //150 / 2.25
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, float percentFull)
 		{
 			int ret = Mathf.FloorToInt(fuelLevel / MassFactor(percentFull));
