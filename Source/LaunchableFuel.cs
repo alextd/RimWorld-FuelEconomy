@@ -61,13 +61,10 @@ namespace Fuel_Economy
 			{
 				foreach (Thing t in transporter.GetDirectlyHeldThings())
 				{
-					Log.Message("thing " + t + " mass is " + t.GetStatValue(StatDefOf.Mass));
-					mass += t.GetStatValue(StatDefOf.Mass);
+					mass += t.GetStatValue(StatDefOf.Mass) * t.stackCount;
 				}
-				Log.Message("transporter " + transporter + " massCap is " + transporter.Props.massCapacity);
 				max += transporter.Props.massCapacity;
 			}
-			Log.Message("Max is " + max);
 			return mass / max;
 		}
 	}
