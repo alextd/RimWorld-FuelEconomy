@@ -33,7 +33,7 @@ namespace Fuel_Economy
 			}
 			else if (transferables.Any(t => t.CountToTransfer > 0 && t.AnyThing.GetStatValue(StatDefOf.Mass) > maxMass))
 			{
-				Messages.Message($"An item is too large to fit in a small transport pod ({maxMass}kg max)", MessageTypeDefOf.RejectInput);
+				Messages.Message("TD.SmallTransportPodTooLarge".Translate(new object[] { maxMass }), MessageTypeDefOf.RejectInput);
 				__result = false;
 			}
 		}
