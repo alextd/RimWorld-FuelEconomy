@@ -17,5 +17,6 @@ So you can either keep that max range or let Fuel Economy extend the range for p
 100% would just be vanilla.
 0% would mean weightless pods and insane range. Fuel cost would depend solely on contents.
 50% would means the pod weighs 150kg and can hold another 150kg inside. A 50% fuel cost to launch, plus more fuel per passenger.</TD.EmptyPercentDesc>
+	<TD.SmallTransportPodItemsOnly>Small transport pod can only carry items</TD.SmallTransportPodItemsOnly>
 	
 </LanguageData>

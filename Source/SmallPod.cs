@@ -28,7 +28,7 @@ namespace Fuel_Economy
 			Log.Message($"transferables are {transferables}");
 			if (transferables.Any(t => t.CountToTransfer > 0 && t.AnyThing is Pawn))
 			{
-				Messages.Message("Small transport pod can only carry items", MessageTypeDefOf.RejectInput);
+				Messages.Message("TD.SmallTransportPodItemsOnly".Translate(), MessageTypeDefOf.RejectInput);
 				__result = false;
 			}
 			else if (transferables.Any(t => t.CountToTransfer > 0 && t.AnyThing.GetStatValue(StatDefOf.Mass) > maxMass))
