@@ -101,8 +101,7 @@ namespace Fuel_Economy
 		}
 	}
 	
-	[HarmonyPatch(typeof(CompLaunchable))]
-	[HarmonyPatch("MaxLaunchDistance", PropertyMethod.Getter)]
+	[HarmonyPatch(typeof(CompLaunchable), "MaxLaunchDistance", MethodType.Getter)]
 	public static class MaxLaunchDistance_Patch
 	{
 		//private void TryLaunch(GlobalTargetInfo target, PawnsArriveMode arriveMode, bool attackOnArrival)
