@@ -26,7 +26,7 @@ namespace Fuel_Economy
 			float fuelForPod = MassFactor(launchable) * dist;
 			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
 				fuelForPod /= smallPodEfficiency;
-			Log.Message("Needs " + fuelForPod);
+			Log.Message($"Needs {fuelForPod}");
 			return fuelForPod;
 		}
 
@@ -38,7 +38,7 @@ namespace Fuel_Economy
 				distance *= smallPodEfficiency;
 			if (!Settings.Get().pastVanillaMaxRange && distance > vanillaMax)
 				distance = vanillaMax;
-			Log.Message("Can do " + distance);
+			Log.Message($"Can do {distance}");
 			return Mathf.FloorToInt(distance);
 		}
 
