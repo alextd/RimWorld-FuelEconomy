@@ -15,7 +15,7 @@ namespace Fuel_Economy
 			HarmonyInstance.DEBUG = true;
 #endif
 			HarmonyInstance harmony = HarmonyInstance.Create("Uuugggg.rimworld.Fuel_Economy.main");
-			harmony.PatchAll(Assembly.GetExecutingAssembly());
+			harmony.PatchAll();
 		}
 
 		public override void DoSettingsWindowContents(Rect inRect)
