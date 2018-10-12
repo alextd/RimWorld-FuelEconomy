@@ -12,16 +12,14 @@ namespace Fuel_Economy
 	class SmallPod
 	{
 		//private bool CheckForErrors(List<Pawn> pawns)
-		public static void Postfix(ref bool __result, Dialog_LoadTransporters __instance)
+		public static void Postfix(ref bool __result, Dialog_LoadTransporters __instance, List<CompTransporter> ___transporters)
 		{
 			if (!__result) return;
 
-			List<CompTransporter> transporters = (List<CompTransporter>)AccessTools.Field(typeof(Dialog_LoadTransporters), "transporters").GetValue(__instance);
-
-			if (!transporters.All(t => t.parent.def == SmallPodDefOf.TransportPodSmall))
+			if (!___transporters.All(t => t.parent.def == SmallPodDefOf.TransportPodSmall))
 				return;
 
-			float maxMass = transporters[0].Props.massCapacity;
+			float maxMass = ___transporters[0].Props.massCapacity;
 			Log.Message($"maxMass is {maxMass}");
 
 			List <TransferableOneWay> transferables = (List<TransferableOneWay>)AccessTools.Field(typeof(Dialog_LoadTransporters), "transferables").GetValue(__instance);
