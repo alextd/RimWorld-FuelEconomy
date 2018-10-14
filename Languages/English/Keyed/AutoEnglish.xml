@@ -2,10 +2,6 @@
 <LanguageData>
 	
 	<TD.FuelEconomy>Fuel Economy</TD.FuelEconomy>
-	<TD.WhatPAnEmptyPodSaves>What % an empty pod saves</TD.WhatPAnEmptyPodSaves>
-	<TD.Weight>Weight</TD.Weight>
-	<TD.FuelCostAtMaxRange>Fuel Cost at max range</TD.FuelCostAtMaxRange>
-	<TD.MaxDistance>Max distance with full fuel</TD.MaxDistance>
 	<TD.SettingExtendRange>Increase max range for partially filled transport pods</TD.SettingExtendRange>
 	<TD.SettingEmptyPercent>How much fuel does an empty pod require</TD.SettingEmptyPercent>
 	<TD.FuelSettingsDesc>This mod makes unoccupied transport pods use less fuel. 
