@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	
+	<TD.FuelEconomy>Fuel Economy</TD.FuelEconomy>
+	<TD.WhatPAnEmptyPodSaves>Qué % se ahorra con una cápsula vacía</TD.WhatPAnEmptyPodSaves>
+	<TD.Weight>Peso</TD.Weight>
+	<TD.FuelCostAtMaxRange>Costo de combustible en el rango máximo</TD.FuelCostAtMaxRange>
+	<TD.MaxDistance>Distancia máxima con combustible lleno</TD.MaxDistance>
+	<TD.SettingExtendRange>Aumentar el alcance máximo de las cápsulas de transporte parcialmente llenas</TD.SettingExtendRange>
+	<TD.SettingEmptyPercent>¿Cuánto combustible requiere una cápsula vacía?</TD.SettingEmptyPercent>
+	<TD.FuelSettingsDesc>Este mod hace que las cápsulas de transporte vacías consuman menos combustible. 
+Cada kg en la cápsula significa que se necesita más combustible, y si la cápsula está llena, este mod no hace ninguna diferencia.
+
+Esto también significa que el alcance máximo del juego de base podría no usar todo el combustible.
+Así que se puede mantener ese rango máximo o dejar que Fuel Economy extienda el rango para vainas parcialmente llenas.</TD.FuelSettingsDesc>
+	<TD.EmptyPercentDesc>Esto también afecta al rango máximo si se habilita arriba.
+100% sería como en Rimworld base.
+0% significaría cápsulas ingrávidas y rango de locura. El costo del combustible dependería únicamente del contenido.
+50% significa que la cápsula pesa 150 kg y puede contener otros 150 kg en su interior. Un 50% de costo de combustible para el lanzamiento, y aún más combustible por pasajero.</TD.EmptyPercentDesc>
+	
+</LanguageData>
