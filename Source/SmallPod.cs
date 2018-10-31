@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using RimWorld;
 using Verse;
 using Harmony;
@@ -11,6 +12,7 @@ namespace Fuel_Economy
 	[HarmonyPatch(typeof(Dialog_LoadTransporters), "CheckForErrors")]
 	class SmallPod
 	{
+		public static FieldInfo transferablesInfo = AccessTools.Field(typeof(Dialog_LoadTransporters), "transferables");
 		//private bool CheckForErrors(List<Pawn> pawns)
 		public static void Postfix(ref bool __result, Dialog_LoadTransporters __instance, List<CompTransporter> ___transporters)
 		{
@@ -22,7 +24,7 @@ namespace Fuel_Economy
 			float maxMass = ___transporters[0].Props.massCapacity;
 			Log.Message($"maxMass is {maxMass}");
 
-			List <TransferableOneWay> transferables = (List<TransferableOneWay>)AccessTools.Field(typeof(Dialog_LoadTransporters), "transferables").GetValue(__instance);
+			List <TransferableOneWay> transferables = (List<TransferableOneWay>)transferablesInfo.GetValue(__instance);
 			Log.Message($"transferables are {transferables}");
 			if (transferables.Any(t => t.CountToTransfer > 0 && t.AnyThing is Pawn))
 			{
