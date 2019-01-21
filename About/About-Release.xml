@@ -2,7 +2,9 @@
 <ModMetaData>
 	<name>Fuel Economy</name>
 	<author>Uuugggg</author>
-	<targetVersion>1.0.0</targetVersion>
+	<supportedVersions>
+		<li>1.0.0</li>
+	</supportedVersions>
 	<description>Transport Pods use less fuel for less mass.
 	
 A small pod to transport small amounts of things for less cost.
