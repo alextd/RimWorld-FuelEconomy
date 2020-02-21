@@ -35,7 +35,7 @@
 			<li Class="CompProperties_Launchable" />
 		</comps>
 		<inspectorTabs>
-			<li>ITab_TransporterContents</li>
+			<li>ITab_ContentsTransporter</li>
 		</inspectorTabs>
 		<placeWorkers>
 			<li>PlaceWorker_NeedsFuelingPort</li>
