@@ -20,12 +20,10 @@ namespace Fuel_Economy
 
 	static class LaunchableMethods
 	{
-		public static float smallPodEfficiency = 5;
+		public static float smallPodEfficiency = 5;	//TODO DefExtensions to make this an xml value?
 		public static float FuelNeededToLaunchAtDist(float dist, CompLaunchable launchable)
 		{
 			float fuelForPod = FuelPerTile(launchable) * dist;
-			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
-				fuelForPod /= smallPodEfficiency;
 			Log.Message($"At {dist}, {launchable.parent} needs {fuelForPod} fuel with {FuelPerTile(launchable)} Fuel per file");
 			return fuelForPod;
 		}
@@ -34,10 +32,10 @@ namespace Fuel_Economy
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, CompLaunchable launchable)
 		{
 			float distance = fuelLevel / FuelPerTile(launchable);
-			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
-				distance *= smallPodEfficiency;
+
 			if (!Settings.Get().pastVanillaMaxRange && distance > vanillaMax)
 				distance = vanillaMax;
+
 			Log.Message($"Can do {distance} for {fuelLevel} fuel with {FuelPerTile(launchable)} Fuel per file");
 			return Mathf.FloorToInt(distance);
 		}
@@ -49,7 +47,11 @@ namespace Fuel_Economy
 		public static float FuelPerTile(CompLaunchable launchable)
 		{
 			float emptyPercent = Settings.Get().emptyPercent;
-			return vanillaFuelPerTile * (emptyPercent + (1 - emptyPercent) * PercentFull(launchable));
+			float fuelPerTileBase = vanillaFuelPerTile * (emptyPercent + (1 - emptyPercent) * PercentFull(launchable));
+			
+			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
+				return fuelPerTileBase / smallPodEfficiency;  //TODO: DefExtension and just divide by that value
+			return fuelPerTileBase;
 		}
 
 		public static float PercentFull(CompLaunchable launchable)
