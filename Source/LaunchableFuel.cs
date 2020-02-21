@@ -31,7 +31,7 @@ namespace Fuel_Economy
 		static int vanillaMax = 66; //150 / 2.25
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, CompLaunchable launchable)
 		{
-			if (launchable.parent.def == SmallPodDefOf.TransportPodSmall)
+			if (Settings.Get().adjustSmallFuel && launchable.parent.def == SmallPodDefOf.TransportPodSmall)
 			{
 				float smallFuelCapacity = launchable.FuelingPortSource.GetComp<CompRefuelable>()?.Props.fuelCapacity / smallPodEfficiency ?? 0;
 				fuelLevel = Math.Min(smallFuelCapacity, fuelLevel);

@@ -9,6 +9,7 @@ namespace Fuel_Economy
 	class Settings : ModSettings
 	{
 		public bool pastVanillaMaxRange = false;
+		public bool adjustSmallFuel = true;
 		public float emptyPercent = 0.5f;
 
 		public static Settings Get()
@@ -28,13 +29,17 @@ namespace Fuel_Economy
 			options.Label("TD.SettingEmptyPercent".Translate() + $" ({emptyPercent:P})");
 			emptyPercent = options.Slider(emptyPercent, 0, 1);
 			options.Label("TD.EmptyPercentDesc".Translate());
-			
+
+			options.Gap();
+			options.CheckboxLabeled("TD.SettingAdjustSmallFuel".Translate(), ref adjustSmallFuel);
+
 			options.End();
 		}
 		
 		public override void ExposeData()
 		{
 			Scribe_Values.Look(ref pastVanillaMaxRange, "vanillaMaxRange", false);
+			Scribe_Values.Look(ref adjustSmallFuel, "adjustSmallFuel", true);
 			Scribe_Values.Look(ref emptyPercent, "emptyPercent", 0.5f);
 		}
 	}
