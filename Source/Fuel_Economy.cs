@@ -2,7 +2,7 @@
 using System.Linq;
 using Verse;
 using UnityEngine;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 
 namespace Fuel_Economy
@@ -14,9 +14,9 @@ namespace Fuel_Economy
 			// initialize settings
 			GetSettings<Settings>();
 #if DEBUG
-			HarmonyInstance.DEBUG = true;
+			Harmony.DEBUG = true;
 #endif
-			HarmonyInstance harmony = HarmonyInstance.Create("Uuugggg.rimworld.Fuel_Economy.main");
+			Harmony harmony = new Harmony("Uuugggg.rimworld.Fuel_Economy.main");
 
 			//Turn off DefOf warning since harmony patches trigger it.
 			MethodInfo DefOfHelperInfo = AccessTools.Method(typeof(DefOfHelper), "EnsureInitializedInCtor");

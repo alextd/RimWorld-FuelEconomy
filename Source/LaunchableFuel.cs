@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using Verse;
 using RimWorld;
 using UnityEngine;
@@ -81,7 +81,7 @@ namespace Fuel_Economy
 
 			foreach (CodeInstruction i in codeInstructions)
 			{
-				if (i.opcode == OpCodes.Call && i.operand == FuelNeededToLaunchAtDistInfo)
+				if (i.opcode == OpCodes.Call && i.operand.Equals(FuelNeededToLaunchAtDistInfo))
 				{
 					i.operand = FuelNeededToLaunchAtDistInfoPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this
@@ -113,7 +113,7 @@ namespace Fuel_Economy
 
 			foreach (CodeInstruction i in codeInstructions)
 			{
-				if (i.opcode == OpCodes.Call && i.operand == MaxLaunchDistanceAtFuelLevel)
+				if (i.opcode == OpCodes.Call && i.operand.Equals(MaxLaunchDistanceAtFuelLevel))
 				{
 					i.operand = MaxLaunchDistanceAtFuelLevelPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this

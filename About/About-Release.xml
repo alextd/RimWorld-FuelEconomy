@@ -4,7 +4,9 @@
 	<author>Uuugggg</author>
 	<supportedVersions>
 		<li>1.0</li>
+		<li>1.1</li>
 	</supportedVersions>
+	<packageId>Uuugggg.FuelEconomy</packageId>
 	<description>Transport Pods use less fuel for less mass.
 	
 A small pod to transport small amounts of things for less cost.

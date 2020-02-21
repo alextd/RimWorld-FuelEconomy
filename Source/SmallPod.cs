@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using RimWorld;
 using Verse;
-using Harmony;
+using HarmonyLib;
 
 namespace Fuel_Economy
 {
