@@ -89,7 +89,7 @@ namespace Fuel_Economy
 
 			foreach (CodeInstruction i in codeInstructions)
 			{
-				if (i.opcode == OpCodes.Call && i.operand.Equals(FuelNeededToLaunchAtDistInfo))
+				if (i.Calls(FuelNeededToLaunchAtDistInfo))
 				{
 					i.operand = FuelNeededToLaunchAtDistInfoPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this
@@ -121,7 +121,7 @@ namespace Fuel_Economy
 
 			foreach (CodeInstruction i in codeInstructions)
 			{
-				if (i.opcode == OpCodes.Call && i.operand.Equals(MaxLaunchDistanceAtFuelLevelInfo))
+				if (i.Calls(MaxLaunchDistanceAtFuelLevelInfo))
 				{
 					i.operand = MaxLaunchDistanceAtFuelLevelPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this
