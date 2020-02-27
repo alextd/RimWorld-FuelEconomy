@@ -91,10 +91,11 @@ namespace Fuel_Economy
 			{
 				if (i.Calls(FuelNeededToLaunchAtDistInfo))
 				{
-					i.operand = FuelNeededToLaunchAtDistInfoPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this
+					yield return new CodeInstruction(OpCodes.Call, FuelNeededToLaunchAtDistInfoPatch);
 				}
-				yield return i;
+				else
+					yield return i;
 			}
 		}
 	}
@@ -123,10 +124,11 @@ namespace Fuel_Economy
 			{
 				if (i.Calls(MaxLaunchDistanceAtFuelLevelInfo))
 				{
-					i.operand = MaxLaunchDistanceAtFuelLevelPatch;
 					yield return new CodeInstruction(OpCodes.Ldarg_0); //this
+					yield return new CodeInstruction(OpCodes.Call, MaxLaunchDistanceAtFuelLevelPatch);
 				}
-				yield return i;
+				else
+					yield return i;
 			}
 		}
 	}
