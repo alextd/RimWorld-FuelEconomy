@@ -100,7 +100,7 @@ namespace Fuel_Economy
 		}
 	}
 
-	[HarmonyPatch(typeof(CompLaunchable), "ChoseWorldTarget")]
+	[HarmonyPatch(typeof(CompLaunchable), "ChoseWorldTarget", new Type[] { typeof(RimWorld.Planet.GlobalTargetInfo)})]
 	//private void TryLaunch(GlobalTargetInfo target, PawnsArriveMode arriveMode, bool attackOnArrival)
 	static class ChoseWorldTargetPatch
 	{
