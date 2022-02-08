@@ -6,16 +6,11 @@ using RimWorld;
 
 namespace Fuel_Economy
 {
-	class Settings : ModSettings
+	public class Settings : ModSettings
 	{
 		public bool pastVanillaMaxRange = false;
 		public bool adjustSmallFuel = true;
 		public float emptyPercent = 0.5f;
-
-		public static Settings Get()
-		{
-			return LoadedModManager.GetMod<Fuel_Economy.Mod>().GetSettings<Settings>();
-		}
 
 		public void DoWindowContents(Rect wrect)
 		{
