@@ -31,18 +31,12 @@ namespace Fuel_Economy
 		static int vanillaMax = 66; //150 / 2.25
 		public static int MaxLaunchDistanceAtFuelLevel(float fuelLevel, CompLaunchable launchable)
 		{
-			if (Mod.settings.adjustSmallFuel && launchable.parent.def == SmallPodDefOf.TransportPodSmall)
-			{
-				float smallFuelCapacity = launchable.FuelingPortSource.GetComp<CompRefuelable>()?.Props.fuelCapacity / smallPodEfficiency ?? 0;
-				fuelLevel = Math.Min(smallFuelCapacity, fuelLevel);
-			}
-
 			float distance = fuelLevel / FuelPerTile(launchable);
 
 			if (!Mod.settings.pastVanillaMaxRange && distance > vanillaMax)
 				distance = vanillaMax;
 
-			Log.Message($"Can do {distance} for {fuelLevel} fuel with {FuelPerTile(launchable)} Fuel per file");
+			Log.Message($"Can do {distance} for {distance* FuelPerTile(launchable)}/{fuelLevel} fuel with {FuelPerTile(launchable)} Fuel per file");
 			return Mathf.FloorToInt(distance);
 		}
 

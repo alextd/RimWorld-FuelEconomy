@@ -3,7 +3,6 @@
 	
 	<TD.FuelEconomy>Fuel Economy</TD.FuelEconomy>
 	<TD.SettingExtendRange>Increase max range for partially filled transport pods</TD.SettingExtendRange>
-	<TD.SettingAdjustSmallFuel>Small transport pods can only use a smaller fuel supply (for the same max range as normal pods)</TD.SettingAdjustSmallFuel>
 	<TD.SettingEmptyPercent>How much fuel does an empty pod require</TD.SettingEmptyPercent>
 	<TD.FuelSettingsDesc>This mod makes unoccupied transport pods use less fuel. 
 Each kg in the pod means more fuel is needed, and if the pod is full this mod makes no difference.
